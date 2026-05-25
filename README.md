@@ -1,5 +1,4 @@
-
-GIWA SDK FEATHER - FULL SUITE API
+**GIWA SDK FEATHER - FULL SUITE API**
 
 
 GIWA SDK Feather is an ultra-lightweight Web3 API infrastructure designed to execute at the high speed of the L2 layer (OP Stack). This service exposes the 5 core modules of the Feather suite, enabling legacy applications or autonomous AI micro-agents to interact seamlessly with the GIWA Chain.
