@@ -1,0 +1,13 @@
+{
+  "name": "giwa-sdk-feather",
+  "version": "1.0.0",
+  "description": "A modular, ultra-lightweight monetization and enterprise escrow toolkit for GIWA Chain L2, powered by the OP Stack.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ethers": "^6.11.1",
+    "express": "^4.19.2"
+  }
+}
