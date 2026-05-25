@@ -1,115 +1,82 @@
-**GIWA SDK FEATHER - FULL SUITE API**
+# 🪶 GIWA SDK Feather — Full Suite API
 
+Lightweight Web3 API infrastructure engineered for high-frequency operations on the GIWA L2 OP Stack. This service bridges the gap between legacy applications and decentralized infrastructure. It exposes the 5 core modules of the Feather suite, allowing automated software components and autonomous AI micro-agents to interact seamlessly with the GIWA Chain.
 
-GIWA SDK Feather is an ultra-lightweight Web3 API infrastructure designed to execute at the high speed of the L2 layer (OP Stack). This service exposes the 5 core modules of the Feather suite, enabling legacy applications or autonomous AI micro-agents to interact seamlessly with the GIWA Chain.
+---
 
+## 🚀 Core Architecture (The 5 Modules)
 
---------------------------------------------------------------------------------
-FEATURES AND ARCHITECTURE (THE 5 MODULES)
---------------------------------------------------------------------------------
+* **01 | Fintech Escrow**  
+  Secure, programmable funds locking and milestone-based release.
 
-The API orchestrates and exposes the 5 key functionalities of the SDK:
+* **02 | Notary & Anchoring**  
+  Dojang-Style permanent cryptographic timestamping for logs, audits, and invoices.
 
-1. Fintech Escrow:
-   Secure and programmable funds locking without third-party intervention.
+* **03 | Auto-Commissioning**  
+  Native, transparent fee splitting executed directly at the transaction layer.
 
-2. Notary and Timestamping (Dojang-Style Anchoring):
-   Permanently engraving unique cryptographic signatures (Hashes) of logs, 
-   audit reports, or invoices on-chain.
+* **04 | Compliance Filter**  
+  Identity gating that verifies network-level Soulbound Tokens (SBT / GIWA ID).
 
-3. Automated Commissioning:
-   Instant and transparent splitting of fees directly at the transaction root.
+* **05 | AI Micro-payments**  
+  High-frequency, ultra-low-fee value transfers optimized for machine economies.
 
-4. GIWA ID Compliance Filter:
-   Account identity and verification gate checking for valid Soulbound Tokens 
-   (SBT) on the network.
+---
 
-5. AI Agent Micro-payments:
-   High-frequency, ultra-low-fee value transfers designed for 
-   machine-to-machine economies.
+## 🛰️ API Endpoints
 
+### 🧭 System Discovery
 
---------------------------------------------------------------------------------
-API ENDPOINTS
---------------------------------------------------------------------------------
+* **GET /**  
+  Returns global system health, operational mode, and loaded software modules.
 
-The production API is deployed and live at:  
-https://giwa-sdk-feather.onrender.com/
+* **GET /api/my-wallet**  
+  Queries the live L2 network to return the real-time testnet ETH balance of the tracking engine.
 
---- 1. System Status ---
-* URL: /
-* Method: GET
-* Description: Checks the API health status and lists all active modules.
+* **GET /api/compliance/:address**  
+  Interrogates the identity registry to check for valid compliance tokens attached to the target address.
 
---- 2. Wallet Tracker ---
-* URL: /api/my-wallet
-* Method: GET
-* Description: Extracts the real-time testnet ETH balance of the configured wallet.
+### ✍️ Core Execution (Write Operations)
 
---- 3. Compliance Filter (GIWA ID) ---
-* URL: /api/compliance/:address
-* Method: GET
-* Description: Verifies whether the specified address holds a valid GIWA ID.
-
---- 4. Notary Anchoring (Dojang-Style) ---
-* URL: /api/notary/anchor
-* Method: POST
-* Payload Format: JSON
-* Example Payload:
+* **POST /api/notary/anchor**  
+  Generates and registers a cryptographic fingerprint on-chain.  
+  Format JSON :
   {
     "data": "Text, log entry, or invoice fingerprint to certify"
   }
 
---- 5. Escrow Provisioning ---
-* URL: /api/escrow/create
-* Method: POST
-* Payload Format: JSON
-* Example Payload:
+* **POST /api/escrow/create**  
+  Deploys a conditional settlement channel for automated payments.  
+  Format JSON :
   {
     "providerAddress": "0x0000000000000000000000000000000000000000",
     "amount": "0.01"
   }
 
---- 6. AI Micro-payment ---
-* URL: /api/ai/pay
-* Method: POST
-* Payload Format: JSON
-* Example Payload:
+* **POST /api/ai/pay**  
+  Triggers an instant, high-frequency settlement transfer between network nodes.  
+  Format JSON :
   {
     "targetAgent": "0x0000000000000000000000000000000000000000",
     "amount": "0.001"
   }
 
+---
 
---------------------------------------------------------------------------------
-ENVIRONMENT VARIABLES (RENDER CONFIGURATION)
---------------------------------------------------------------------------------
+## 🛠️ Configuration & Variables
 
-To operate in production, the application relies on the following environment 
-variables to be set up securely in your deployment dashboard:
+The runtime environment requires the following variables to be defined within the cloud infrastructure layer (e.g., Render Dashboard):
 
-* MY_WALLET_ADDRESS: The public address used for real-time balance tracking queries.
-* PRIVATE_KEY: The private key required to sign write transactions. If missing, 
-  the SDK safely falls back to structural simulation mode.
+* **MY_WALLET_ADDRESS** : The target public address used for ledger synchronization and balance auditing.
+* **PRIVATE_KEY** : Cryptographic key required to sign state-changing transactions. If omitted, the architecture securely defaults to a decoupled structural simulation mode.
 
+---
 
---------------------------------------------------------------------------------
-LOCAL DEVELOPMENT
---------------------------------------------------------------------------------
+## ⚙️ Local Development Workflow
 
-To clone and run the project locally, execute the following commands in your 
-terminal:
+Initialize and spin up the microservice ecosystem locally using the following sequence in your terminal:
 
-1. Clone the repository:
-   git clone https://github.com/jd3600/giwa-sdk-feather.git
-
-2. Go into the project directory:
-   cd giwa-sdk-feather
-
-3. Install the dependencies:
-   npm install
-
-4. Start the server:
-   npm start
-
-
+git clone https://github.com/jd3600/giwa-sdk-feather.git  
+cd giwa-sdk-feather  
+npm install  
+npm start
