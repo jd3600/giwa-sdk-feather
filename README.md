@@ -27,6 +27,7 @@ Lightweight Web3 API infrastructure engineered for high-frequency operations on 
 
 ### 🧭 System Discovery
 
+---
 * **GET /**  
   Returns global system health, operational mode, and loaded software modules.
 
@@ -35,6 +36,7 @@ Lightweight Web3 API infrastructure engineered for high-frequency operations on 
 
 * **GET /api/compliance/:address**  
   Interrogates the identity registry to check for valid compliance tokens attached to the target address.
+  ---
 
 ### ✍️ Core Execution (Write Operations)
 
