@@ -1,84 +1,96 @@
-# 🪶 GIWA SDK Feather — Full Suite API
+# 🪶GIWA SDK Feather — Full Suite API
 
-Lightweight Web3 API infrastructure engineered for high-frequency operations on the GIWA L2 OP Stack. This service bridges the gap between legacy applications and decentralized infrastructure. It exposes the 5 core modules of the Feather suite, allowing automated software components and autonomous AI micro-agents to interact seamlessly with the GIWA Chain.
+Ultra-lightweight Web3 infrastructure built to run at L2 speed (OP Stack). Exposes the 5 core modules of the Feather suite, letting legacy applications or autonomous AI micro-agents interact seamlessly with the GIWA Chain.
 
----
-
-## 🚀 Core Architecture (The 5 Modules)
-
-* **01 | Fintech Escrow**  
-  Secure, programmable funds locking and milestone-based release.
-
-* **02 | Notary & Anchoring**  
-  Dojang-Style permanent cryptographic timestamping for logs, audits, and invoices.
-
-* **03 | Auto-Commissioning**  
-  Native, transparent fee splitting executed directly at the transaction layer.
-
-* **04 | Compliance Filter**  
-  Identity gating that verifies network-level Soulbound Tokens (SBT / GIWA ID).
-
-* **05 | AI Micro-payments**  
-  High-frequency, ultra-low-fee value transfers optimized for machine economies.
+**Live API:** https://giwa-sdk-feather.onrender.com/
 
 ---
 
-## 🛰️ API Endpoints
+## The 5 Modules
 
-### 🧭 System Discovery
-
-
-* **GET /**  
-  Returns global system health, operational mode, and loaded software modules.
-
-* **GET /api/my-wallet**  
-  Queries the live L2 network to return the real-time testnet ETH balance of the tracking engine.
-
-* **GET /api/compliance/:address**  
-  Interrogates the identity registry to check for valid compliance tokens attached to the target address.
-  
-
-### ✍️ Core Execution (Write Operations)
-
-* **POST /api/notary/anchor**  
-  Generates and registers a cryptographic fingerprint on-chain.  
-  Format JSON :
-  {
-    "data": "Text, log entry, or invoice fingerprint to certify"
-  }
-
-* **POST /api/escrow/create**  
-  Deploys a conditional settlement channel for automated payments.  
-  Format JSON :
-  {
-    "providerAddress": "0x0000000000000000000000000000000000000000",
-    "amount": "0.01"
-  }
-
-* **POST /api/ai/pay**  
-  Triggers an instant, high-frequency settlement transfer between network nodes.  
-  Format JSON :
-  {
-    "targetAgent": "0x0000000000000000000000000000000000000000",
-    "amount": "0.001"
-  }
+| # | Module | Description |
+|---|--------|-------------|
+| 1 | **Fintech Escrow** | Secure, programmable fund locking with no third-party involvement |
+| 2 | **Dojang-Style Notary** | Permanent on-chain anchoring of cryptographic signatures (logs, audit reports, invoices) |
+| 3 | **Automated Commissioning** | Instant, transparent fee splitting calculated at the transaction root |
+| 4 | **GIWA ID Compliance Filter** | Identity verification gate via Soulbound Token (SBT) on the network |
+| 5 | **AI Micro-payments** | High-frequency, ultra-low-fee transfers designed for machine-to-machine economies |
 
 ---
 
-## 🛠️ Configuration & Variables
+## Endpoints
 
-The runtime environment requires the following variables to be defined within the cloud infrastructure layer (e.g., Render Dashboard):
-
-* **MY_WALLET_ADDRESS** : The target public address used for ledger synchronization and balance auditing.
-* **PRIVATE_KEY** : Cryptographic key required to sign state-changing transactions. If omitted, the architecture securely defaults to a decoupled structural simulation mode.
+### `GET /`
+Returns the global API status and the list of active modules.
 
 ---
 
-## ⚙️ Local Development Workflow
+### `GET /api/my-wallet`
+Returns the real-time testnet ETH balance of the configured wallet.
 
-Initialize and spin up the microservice ecosystem locally using the following sequence in your terminal:
+---
 
-git clone https://github.com/jd3600/giwa-sdk-feather.git  
-cd giwa-sdk-feather  
-npm install  
+### `GET /api/compliance/:address`
+Checks whether an address holds a valid GIWA ID (SBT).
+
+```
+GET /api/compliance/0xYourAddressHere
+```
+
+---
+
+### `POST /api/notary/anchor`
+Engraves an immutable cryptographic fingerprint on-chain.
+
+```json
+{ "data": "Text, log entry, or invoice fingerprint to certify" }
+```
+
+---
+
+### `POST /api/escrow/create`
+Provisions an escrow project with automatic commissioning.
+
+```json
+{ "providerAddress": "0x000...000", "amount": "0.01" }
+```
+
+---
+
+### `POST /api/ai/pay`
+Sends a micro-payment to a target AI agent.
+
+```json
+{ "targetAgent": "0x000...000", "amount": "0.001" }
+```
+
+---
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `MY_WALLET_ADDRESS` | Public address used for real-time balance tracking |
+| `PRIVATE_KEY` | Private key to sign write transactions. If missing, the SDK falls back to simulation mode |
+
+---
+
+## Local Setup
+
+```bash
+git clone https://github.com/jd3600/giwa-sdk-feather.git
+cd giwa-sdk-feather
+npm install
 npm start
+```
+
+Server runs on `http://localhost:3000` by default.
+
+---
+
+## Tech Stack
+
+- **Runtime:** Node.js + Express
+- **Blockchain:** ethers.js v6
+- **Network:** GIWA Chain Sepolia (OP Stack L2)
+- **Deployment:** Render
